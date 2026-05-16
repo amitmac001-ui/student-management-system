@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="header">
+        🎓 Vedantaa Student Management System
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="course" onclick="toggleMBBS()">
+    MBBS ⬇️
+</div>
+
+<div id="mbbs-years" style="display:none;">
+
+    <div class="year">
+    <a href="/firstmbbs/" style="text-decoration:none; color:black;">
+        FIRST MBBS
+    </a>
+</div>
+
+    <div class="year">
+        SECOND MBBS
+    </div>
+
+    <div class="year">
+        THIRD MBBS - I
+    </div>
+
+    <div class="year">
+        THIRD MBBS - II
+    </div>
+
+</div>
+
+        <div class="card">
+
+            <div class="course">
+                BPTH
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="course">
+               BSc Nursing
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="course">
+                PG
+            </div>
+
+        </div>
+
+    </div>
+<script>
+
+function toggleMBBS(){
+
+    var x = document.getElementById("mbbs-years");
+
+    if(x.style.display === "none"){
+        x.style.display = "block";
+    }
+
+    else{
+        x.style.display = "none";
+    }
+
+}
+
+</script>
+</body>
+</html>
