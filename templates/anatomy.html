@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Anatomy Faculty</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+
+        body{
+            background:#f1f5f9;
+            padding:20px;
+        }
+
+        .header{
+            background:#0f172a;
+            color:white;
+            padding:20px;
+            border-radius:15px;
+            margin-bottom:20px;
+        }
+
+        .top-bar{
+            display:flex;
+            gap:10px;
+            margin-bottom:20px;
+            flex-wrap:wrap;
+        }
+
+        .top-bar input{
+            flex:1;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            font-size:15px;
+        }
+
+        .top-bar button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:14px 20px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .form-box{
+            display:none;
+            background:white;
+            padding:20px;
+            border-radius:15px;
+            margin-bottom:20px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-box input{
+            width:100%;
+            padding:12px;
+            margin-bottom:12px;
+            border:1px solid #cbd5e1;
+            border-radius:10px;
+        }
+
+        .save-btn{
+            background:#16a34a;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .table-box{
+            overflow:auto;
+            background:white;
+            border-radius:15px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#1e293b;
+            color:white;
+            padding:14px;
+            text-align:left;
+        }
+
+        td{
+            padding:12px;
+            border-bottom:1px solid #e2e8f0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+
+         <h1>
+
+    {{ department|title }} Department
+
+</h1>
+
+        <p>Faculty Management System</p>
+
+    </div>
+
+    <div class="top-bar">
+
+        <input type="text"
+               placeholder="Search Teacher Name...">
+
+        <button onclick="showForm()">
+            + Add Faculty
+        </button>
+
+    </div>
+
+    <div class="form-box"
+         id="facultyForm">
+
+        <input type="text"
+               id="teacherName"
+               placeholder="Teacher Name">
+
+        <input type="text"
+               id="designation"
+               placeholder="Designation">
+        <label>DOB</label>
+
+        <input type="date"
+       placeholder="DOB">
+
+       <input type="text"
+       placeholder="Mobile Number">
+
+       <input type="email"
+       placeholder="Email ID">
+
+       <input type="text"
+       placeholder="OSAC ID">
+
+       <input type="text"
+       placeholder="UG Experience">
+
+       <input type="text"
+       placeholder="PG Experience">
+
+       <input type="text"
+       placeholder="PG Passing Year">
+
+       <input type="text"
+       placeholder="Aadhar Number">
+
+       <input type="text"
+       placeholder="PAN Number">
+
+        <button class="save-btn"
+                onclick="saveFaculty()">
+
+            Save Faculty
+
+        </button>
+
+    </div>
+
+    <div class="table-box">
+
+        <table id="facultyTable">
+
+            <tr>
+
+                <th>Sr.No</th>
+
+                <th>Teacher Name</th>
+
+                <th>Designation</th>
+
+                <th>DOB</th>
+
+                <th>Mobile</th>
+
+                <th>Email</th>
+
+                <th>OSAC ID</th>
+
+                <th>UG Experience</th>
+
+                <th>PG Experience</th>
+
+                <th>PG Passing Year</th>
+
+                <th>Aadhar</th>
+
+                <th>PAN</th>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+<script>
+
+function showForm(){
+
+    document.getElementById("facultyForm").style.display = "block";
+
+}
+
+function saveFaculty(){
+
+    let teacherName =
+        document.getElementById("teacherName").value;
+
+    let designation =
+        document.getElementById("designation").value;
+
+    if(teacherName == "" || designation == ""){
+
+        alert("Please Fill All Details");
+
+        return;
+
+    }
+
+    let table =
+        document.getElementById("facultyTable");
+
+    let row =
+        table.insertRow(-1);
+
+    row.innerHTML = `
+
+        <td>${table.rows.length - 1}</td>
+
+        <td>${teacherName}</td>
+
+        <td>${designation}</td>
+
+        <td>${document.querySelectorAll("input")[2].value}</td>
+
+        <td>${document.querySelectorAll("input")[3].value}</td>
+
+        <td>${document.querySelectorAll("input")[4].value}</td>
+
+        <td>${document.querySelectorAll("input")[5].value}</td>
+
+        <td>${document.querySelectorAll("input")[6].value}</td>
+
+        <td>${document.querySelectorAll("input")[7].value}</td>
+
+        <td>${document.querySelectorAll("input")[8].value}</td>
+
+        <td>${document.querySelectorAll("input")[9].value}</td>
+
+        <td>${document.querySelectorAll("input")[10].value}</td>
+
+
+    `;
+
+    let inputs =
+    document.querySelectorAll("input");
+
+inputs.forEach(function(input){
+
+    input.value = "";
+
+});
+
+    alert("Faculty Saved Successfully 😍");
+
+}
+
+</script>
+
+</body>
+</html>

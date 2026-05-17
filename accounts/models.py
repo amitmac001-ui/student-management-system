@@ -1,39 +1,35 @@
 from django.db import models
 
-class Student(models.Model):
-    name = models.CharField(max_length=100)
-    roll_number = models.CharField(max_length=20)
-    mobile = models.CharField(max_length=15)
-    email = models.EmailField(blank=True)
-    
-    sr_no = models.IntegerField(default=0)
 
-    admission_year = models.CharField(max_length=20)
+class Faculty(models.Model):
 
-    roll_no = models.CharField(max_length=20)
+    sr_no = models.IntegerField()
 
-    prn_no = models.CharField(max_length=30)
+    teacher_name = models.CharField(max_length=200)
 
-    mobile_number = models.CharField(max_length=15)
+    designation = models.CharField(max_length=100)
 
-    aadhar_number = models.CharField(max_length=20)
-    gender_choices = [
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-    ]
+    dob = models.DateField()
 
-    gender = models.CharField(max_length=10, choices=gender_choices)
-    
-    batch = models.CharField(max_length=20)
-    course = models.CharField(max_length=50)
-    year = models.CharField(max_length=20)
+    mobile_no = models.CharField(max_length=15)
 
-    father_name = models.CharField(max_length=100, blank=True)
-    mother_name = models.CharField(max_length=100, blank=True)
+    email_id = models.EmailField()
 
-    address = models.TextField(blank=True)
+    osac_id = models.CharField(max_length=100)
 
-    fees_paid = models.BooleanField(default=False)
+    ug_experience = models.CharField(max_length=100)
+
+    pg_experience = models.CharField(max_length=100)
+
+    pg_passing_year = models.CharField(max_length=10)
+
+    aadhar_no = models.CharField(max_length=20)
+
+    pan_no = models.CharField(max_length=20)
+
+    department = models.CharField(max_length=200)
+
+    joining_date = models.DateField()
 
     def __str__(self):
-        return self.name
+        return self.teacher_name
